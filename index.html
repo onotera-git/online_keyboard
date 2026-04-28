@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>键盘乐器台</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div>
+            <h1>键盘乐器台</h1>
+            <p id="activeInstrument">大钢琴</p>
+          </div>
+        </div>
+
+        <div class="transport">
+          <div class="status-light" id="audioStatus">
+            <span></span>
+            <b>未启动</b>
+          </div>
+          <button class="button primary" id="audioToggle" type="button">启动音频</button>
+          <button class="button icon-button" id="panicBtn" type="button" title="停止全部声音" aria-label="停止全部声音">
+            ■
+          </button>
+        </div>
+      </header>
+
+      <section class="stage" aria-label="演奏区">
+        <div class="visual-pane">
+          <canvas id="scope" width="1280" height="420" aria-label="声音波形"></canvas>
+          <div class="note-strip" id="noteStrip" aria-label="当前音符"></div>
+        </div>
+
+        <div class="keyboard-shell">
+          <div class="keyboard" id="keyboard" aria-label="可演奏键盘"></div>
+        </div>
+      </section>
+
+      <section class="control-board" aria-label="控制台">
+        <div class="control-row">
+          <label class="field">
+            <span>音色</span>
+            <select id="instrumentSelect"></select>
+          </label>
+
+          <label class="field compact">
+            <span>八度</span>
+            <input id="octaveControl" type="range" min="1" max="5" value="3" step="1" />
+            <output id="octaveValue">3</output>
+          </label>
+
+          <label class="field compact">
+            <span>移调</span>
+            <input id="transposeControl" type="range" min="-12" max="12" value="0" step="1" />
+            <output id="transposeValue">0</output>
+          </label>
+
+          <label class="field compact">
+            <span>音量</span>
+            <input id="volumeControl" type="range" min="0" max="1" value="0.78" step="0.01" />
+            <output id="volumeValue">78%</output>
+          </label>
+        </div>
+
+        <div class="control-row effects">
+          <label class="field compact">
+            <span>混响</span>
+            <input id="reverbControl" type="range" min="0" max="0.65" value="0.22" step="0.01" />
+            <output id="reverbValue">22%</output>
+          </label>
+
+          <label class="field compact">
+            <span>延迟</span>
+            <input id="delayControl" type="range" min="0" max="0.55" value="0.12" step="0.01" />
+            <output id="delayValue">12%</output>
+          </label>
+
+          <label class="field compact">
+            <span>泛音</span>
+            <input id="toneControl" type="range" min="-0.5" max="0.7" value="0" step="0.01" />
+            <output id="toneValue">0</output>
+          </label>
+
+          <button class="toggle" id="sustainToggle" type="button" aria-pressed="false">
+            <span class="toggle-dot" aria-hidden="true"></span>
+            延音
+          </button>
+        </div>
+
+        <div class="instrument-grid" id="instrumentGrid" aria-label="音色列表"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
